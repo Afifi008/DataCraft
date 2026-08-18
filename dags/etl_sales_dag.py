@@ -15,7 +15,6 @@ OUTPUT_PATH = PROJECT_ROOT / "data" / "sales_by_category.csv"
 
 
 def extract() -> None:
-    """Read the raw CSV and pass it forward unchanged."""
     df = pd.read_csv(RAW_PATH)
     print(f"[extract] read {len(df)} rows from {RAW_PATH}")
 
@@ -55,7 +54,7 @@ def load() -> None:
 default_args = {
     "owner": "data-team",
     "depends_on_past": False,
-    "retries": 2,
+    "retries": 4,
     "retry_delay": timedelta(minutes=5),
 }
 
