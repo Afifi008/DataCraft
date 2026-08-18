@@ -15,7 +15,7 @@ jobs:
       - name: run test data quality
         run: pytest tests/test_data_quality.py
   build:
-    runs-on: ubutu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: get code 
         uses: actions/checkout@v7
