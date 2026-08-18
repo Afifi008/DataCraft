@@ -1,0 +1,16 @@
+name: test
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code 
+        uses: actions/checkout@v7
+      - name: insatall python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: setup requirements
+        run: pip insatall -r requirements.txt
+      - name: run test data quality
+        run: pytest tests/test_data_quality.py
