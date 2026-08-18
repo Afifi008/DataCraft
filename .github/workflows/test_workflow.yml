@@ -1,10 +1,5 @@
 name: test
-on: 
-  push:
-    branches:
-      - dev 
-    paths:
-      - '.github/workflows/*'
+on: push
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -19,6 +14,24 @@ jobs:
         run: pip install -r requirements.txt
       - name: run test data quality
         run: pytest tests/test_data_quality.py
+  build:
+    runs-on: ubutu-latest
+    steps:
+      - name: get code 
+        uses: actions/checkout@v7
+      - name: insatall python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: setup requirements
+        run: pip install -r requirements.txt
+      - name: build artifact
+        run: python build_output.py
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Datacraft_artifact
+          path: artifact/*.csv
   deploy:
     needs: test
     runs-on: ubuntu-latest
