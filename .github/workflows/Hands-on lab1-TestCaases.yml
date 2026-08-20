@@ -13,4 +13,4 @@ jobs:
             - name : intall the requirement packages
               run  : pip install -r requirements.txt 
             - name : test data quaality
-              run  : pytest tests\test_data_quality.py 
+              run  : pytest tests/test_data_quality.py 
