@@ -17,7 +17,7 @@ jobs:
               run  : pip install -r requirements.txt 
             - name : test data quaality
               run  : pytest tests/test_data_quality.py 
-      deploy:
+      deployment:
           needs   : test
           runs-on : ubuntu-latest
           steps   : 
@@ -31,3 +31,5 @@ jobs:
                   run  : pip install -r requirements.txt
                 - name : print deploy   
                   run  : echo "deploy"
+
+
