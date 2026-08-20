@@ -11,6 +11,6 @@ jobs:
               with :
                    python-version : '3.11'
             - name : intall the requirement packages
-              run  : pip install -r requirement.txt 
+              run  : pip install -r requirements.txt 
             - name : test data quaality
               run  : pytest tests\test_data_quality.py 
