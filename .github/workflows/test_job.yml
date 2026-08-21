@@ -1,5 +1,14 @@
 name: test_workflow_job
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      python_version:
+        type: string
+        description: "python"
+        default: '3.9'
+        required: true
+      test_case:
+        type: string
 jobs:
   test_reusable:
     runs-on: ubuntu-latest
