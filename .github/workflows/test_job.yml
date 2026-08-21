@@ -4,9 +4,6 @@ on:
     inputs:
       python_version:
         type: string
-        description: "python"
-        default: '3.9'
-        required: true
       test_case:
         type: string
 jobs:
@@ -18,7 +15,7 @@ jobs:
       - name: insatall python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
+          python-version: ${{inputs.python_version}}
       - name: cacheing step
         uses: actions/cache@v4
         with:
@@ -27,4 +24,4 @@ jobs:
       - name: setup requirements
         run: pip install -r requirements.txt
       - name: run test data quality
-        run: pytest tests/test_data_quality.py
+        run: pytest ${{inputs.test_case}}
