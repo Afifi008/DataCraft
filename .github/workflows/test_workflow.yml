@@ -1,5 +1,11 @@
 name: test
 on: push
+env:
+  MONGO_HOST: cluster0.qafqccp.mongodb.net
+  MONGO_DB: 'DataCraft_DB'
+  MONGO_USER: 'ahmedkhaledafifi22_db_user'
+  MONGO_PASSWORD: '0LvzKZeg9v8rDsr4'
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -69,5 +75,7 @@ jobs:
         run: |
           cd data/
           ls
+      - name: Deploy to mongo
+        run: python deploy_to_mongo.py
       - name: print deploy
         run: echo "deploy"
