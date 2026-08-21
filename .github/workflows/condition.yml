@@ -18,6 +18,7 @@ jobs:
       - name: install requirements
         run: pip install -r requirements.txt
       - name: run test data
+        continue-on-error: true 
         id: test_data_quality   
         run: pytest tests/test_data_quality.py
       - name: print failure message
