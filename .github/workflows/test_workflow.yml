@@ -12,6 +12,15 @@ jobs:
     with:
       python_version : '3.11'
       test_case: 'tests/test_dag_integrity_win.py'
+      
+  show_results:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: show results
+        run: |
+          echo "test status = ${{needs.test.outputs.test_status}}"
+          echo "Number of Rows= ${{needs.test.outputs.row_count}}"
   build:
     needs: test
     runs-on: ubuntu-latest
