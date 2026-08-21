@@ -38,4 +38,4 @@ jobs:
         id: count
         run: |
           ROWS=$(wc -l< data/raw_sales.csv)
-          echo " row=$ROWS" >> $GITHUB_OUTPUT
+          echo "row=$ROWS">>$GITHUB_OUTPUT
