@@ -24,6 +24,12 @@ jobs:
       - name: print failure message
         if: failure() && steps.test_data_quality.outcome == 'failure'
         run: echo "Data Quality step has failed"
+      - name: outcome
+        if: steps.test_data_quality.outcome == 'failure'
+        run: echo "outcome failed"
+      - name: conclusion
+        if: steps.test_data_quality.conclusion == 'failure'
+        run: echo "conclusion failed"
       - name: generate artifact
         run: python build_output.py
       - name: upload artifacts
