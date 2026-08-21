@@ -3,8 +3,8 @@ on: push
 env:
   MONGO_HOST: cluster0.qafqccp.mongodb.net
   MONGO_DB: 'DataCraft_DB'
-  MONGO_USER: 'ahmedkhaledafifi22_db_user'
-  MONGO_PASSWORD: '0LvzKZeg9v8rDsr4'
+  MONGO_USER: ${{secrets.MONGO_USER}}
+  MONGO_PASSWORD: ${{secrets.MONGO_PASSWORD}}
 
 jobs:
   test:
@@ -16,6 +16,8 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.11'
+      - name: env context
+        run: echo "${{env.MONGO_HOST}}"
       - name: cacheing step
         uses: actions/cache@v4
         with:
