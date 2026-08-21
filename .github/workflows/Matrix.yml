@@ -8,6 +8,12 @@ jobs:
       matrix:
         python_version: ['3.11','3.10', '3.9']
         os: ['ubuntu-latest', 'windows-latest']
+        exclude:
+          - python_version: '3.9'
+            os: 'windows-latest'
+        include:
+          - python_version: '3.12'
+            os: 'ubuntu-latest'
     runs-on: ${{matrix.os}}
     steps:
       - name: Get Code
